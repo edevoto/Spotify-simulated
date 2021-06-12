@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Nav() {
+export function Nav(props) {
 	return (
 		<div className="buttons ">
 			<button
@@ -10,16 +10,17 @@ export function Nav() {
 				back
 			</button>
 			<button
+				onClick={props.pause}
 				className="btn bg-dark btn-lg rounded-circle p-3 m-1"
 				type="click"
 				id="previous">
-				back
+				play
 			</button>
 			<button
 				className="btn bg-dark btn-lg rounded-circle p-3 m-1"
 				type="click"
 				id="previous">
-				back
+				next
 			</button>
 		</div>
 	);

@@ -1,13 +1,16 @@
+import { string } from "prop-types";
 import React from "react";
 
 export function Tracks(props) {
-	return (
-		<div className="tracks bg-dark">
-			<div className=" track">cancion 1</div>
-			<div className=" track">cancion 2</div>
-			<div className=" track">cancion 3</div>
-		</div>
-	);
+	const audioContainer = document.getElementsByClassName("tracks");
+	const newSong = songs.map((string, i) => {
+		<li className="track">{i}</li>;
+		<li className="track">{string[4]}</li>;
+		<li className="track">{string}</li>;
+	});
+	//audioContainer.push(newSong);
+	console.log(newSong);
+	return <audio className="tracks">{newSong}</audio>;
 }
 
 export default Tracks;
