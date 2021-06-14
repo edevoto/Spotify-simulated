@@ -24,39 +24,47 @@ export function Home(props) {
 		}
 	];
 
-	const [next, setNext] = useState(false);
-	const nextSong = () => {
-		setNext(!next);
-		console.log(next);
-	};
+	const [next, setNext] = useState({
+		url: null,
+		name: null,
+		id: 0
+	});
+
 	const [estado, setEstado] = useState(false);
 	const pause = () => {
 		cualkier.pause();
 		setEstado(!estado);
-		console.log(estado);
-	};
 
+		//console.log(estado);
+	};
 	let cualkier = useRef(null);
-	let urlBase = "https://assets.breatheco.de/apis/sound/";
+	let urlBase = `https://assets.breatheco.de/apis/sound/`;
 
 	return (
 		<>
 			<div className="row interface d-flex flex-column justify-content-center align-content-center">
 				<ul className="tracks">
 					{!!songs &&
-						songs.map(song => {
+						songs.map((song, i) => {
 							return (
 								<li
 									className="track"
 									onClick={() => {
 										cualkier.src = urlBase + song.url;
+
+										setNext({
+											url: songs[i + 1].url,
+											name: songs[i + 1].name,
+											id: songs[i + 1].id
+										});
+										return next;
+										//console.log(next);
 									}}
 									key={song.id}>
 									{song.name}
 								</li>
 							);
 						})}
-
 					<audio ref={r => (cualkier = r)} autoPlay></audio>
 				</ul>
 
@@ -73,9 +81,14 @@ export function Home(props) {
 						type="click"
 						id="previous">
 						play
-					</button>{" "}
+					</button>
 					<button
-						onClick={nextSong}
+						onClick={() => {
+							cualkier.src = urlBase + next.url;
+
+							console.log(next.url);
+						}}
+						key={next.id}
 						className={"btn bg-dark btn-lg rounded-circle p-3 m-1"}
 						type="click"
 						id="previous">
