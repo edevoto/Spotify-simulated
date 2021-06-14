@@ -23,6 +23,12 @@ export function Home(props) {
 			url: "files/mario/songs/overworld.mp3"
 		}
 	];
+
+	const [next, setNext] = useState(false);
+	const nextSong = () => {
+		setNext(!next);
+		console.log(next);
+	};
 	const [estado, setEstado] = useState(false);
 	const pause = () => {
 		cualkier.pause();
@@ -33,13 +39,6 @@ export function Home(props) {
 	let cualkier = useRef(null);
 	let urlBase = "https://assets.breatheco.de/apis/sound/";
 
-	// const audioContainer = document.getElementsByClassName("tracks");
-	// const newSong = songs.map((string, i) => {
-	// 	<li className="track">{i}</li>;
-	// 	<li className="track">{string[4]}</li>;
-	// 	<li className="track">{string}</li>;
-	// 	});
-
 	return (
 		<>
 			<div className="row interface d-flex flex-column justify-content-center align-content-center">
@@ -48,6 +47,7 @@ export function Home(props) {
 						songs.map(song => {
 							return (
 								<li
+									className="track"
 									onClick={() => {
 										cualkier.src = urlBase + song.url;
 									}}
@@ -75,6 +75,7 @@ export function Home(props) {
 						play
 					</button>{" "}
 					<button
+						onClick={nextSong}
 						className={"btn bg-dark btn-lg rounded-circle p-3 m-1"}
 						type="click"
 						id="previous">
