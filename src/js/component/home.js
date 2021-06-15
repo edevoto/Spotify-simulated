@@ -69,12 +69,26 @@ export function Home(props) {
 				</ul>
 
 				<div className="buttons ">
-					<button
-						className="btn bg-dark btn-lg rounded-circle p-3 m-1"
-						type="click"
-						id="previous">
-						back
-					</button>
+					{
+						<button
+							onClick={() => {
+								songs.map((song, i) => {
+									cualkier.src = urlBase + song.url;
+									setNext({
+										url: next[i - 1].url,
+										name: next[i - 1].name,
+										id: next[i - 1].id
+									});
+									console.log(songs[i--]);
+								});
+							}}
+							className="btn bg-dark btn-lg rounded-circle p-3 m-1"
+							type="click"
+							id="previous">
+							back
+						</button>
+					}
+
 					<button
 						onClick={pause}
 						className="btn bg-dark btn-lg rounded-circle p-3 m-1"
@@ -84,9 +98,15 @@ export function Home(props) {
 					</button>
 					<button
 						onClick={() => {
-							cualkier.src = urlBase + next.url;
-
-							console.log(next.url);
+							songs.map((song, i) => {
+								cualkier.src = urlBase + next.url;
+								setNext({
+									url: songs[i + 1].url,
+									name: songs[i + 1].name,
+									id: songs[i + 1].id
+								});
+								return next;
+							});
 						}}
 						key={next.id}
 						className={"btn bg-dark btn-lg rounded-circle p-3 m-1"}
