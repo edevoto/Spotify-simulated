@@ -5,8 +5,8 @@
 .interface {
   border-radius: 3px;
   margin: 10vh auto;
-  height: 700px;
-  width: 80%;
+  height: 40vh;
+  width: 60%;
   background-color: rgb(105, 6, 197);
 }
 .buttons {
@@ -26,17 +26,19 @@
   background-color: rgb(104, 157, 25) !important;
 }
 .tracks {
-  margin-bottom: 0;
-  list-style: none;
-    padding-bottom: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  padding-bottom: 3px;
   border-radius: 3px;
   width: 50%;
-  box-shadow: 0px 0pc 5px 4px rgba(128, 128, 128, 0.576);
 }
 .track {
+  list-style: none;
   background-color: rgba(140, 21, 21, 0.289);
   color: greenyellow;
-  padding: 2rem 2rem 1rem 0;
+  padding: 2rem 2rem 1rem 2rem;
   border:2px solid rgba(128, 128, 128, 0.111);
 }
 

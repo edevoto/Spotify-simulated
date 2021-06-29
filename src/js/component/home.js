@@ -42,12 +42,13 @@ export function Home() {
 		<div className="App">
 			{songs.map((s, i) => (
 				<li className="track" key={i} onClick={() => loadSong(i)}>
-					{i === currentSongIndex && "Playing..."}
+					{i === currentSongIndex}
 					{s.name}
 				</li>
 			))}
 			<div className="tracks">
 				<button
+					className="btn btn-lg btn-dark rounded-circle p-3 m-1"
 					onClick={() =>
 						loadSong(
 							currentSongIndex > 0
@@ -58,14 +59,21 @@ export function Home() {
 					Prev
 				</button>
 				{isPLaying === true ? (
-					<button onClick={() => pauseSong()}>Pause</button>
+					<button
+						className="btn btn-lg btn-dark rounded-circle p-3 m-1"
+						onClick={() => pauseSong()}>
+						Pause
+					</button>
 				) : (
-					<button onClick={() => loadSong(currentSongIndex)}>
+					<button
+						className="btn btn-lg btn-dark rounded-circle p-3 m-1"
+						onClick={() => loadSong(currentSongIndex)}>
 						Play
 					</button>
 				)}
 
 				<button
+					className="btn btn-lg btn-dark rounded-circle p-3 m-1"
 					onClick={() =>
 						loadSong(
 							currentSongIndex >= songs.length - 1
